@@ -21,19 +21,9 @@ jobs:
     timeout-minutes: 5
     
     steps:
-      # Install dependencies for the snake game generation
-      - name: Set up Node.js environment
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'  # specify a compatible version of Node.js
-
-      - name: Install canvas dependency
-        run: |
-          npm install canvas
-
-      # Generates a snake game from a GitHub user's contribution graph, outputs an SVG animation
+      # Generates a snake game from a GitHub user's contribution graph, outputs an SVG animation using the Dockerized version
       - name: Generate github-contribution-grid-snake.svg
-        uses: Platane/snk/svg-only@v3
+        uses: Platane/snk@docker
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
