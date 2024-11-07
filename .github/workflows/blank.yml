@@ -21,23 +21,25 @@ jobs:
     timeout-minutes: 5
     
     steps:
-      # Set up Node.js
+      # Set up Node.js environment
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16'
 
-      # Install canvas dependency
+      # Install canvas dependency globally
       - name: Install canvas dependency
         run: |
-          npm install canvas
+          npm install -g canvas
 
-      # Generate the snake game SVG/GIF
+      # Run Platane/snk action to generate the snake SVG/GIF
       - name: Generate github-contribution-grid-snake.svg
-        run: |
-          npx -y @platane/snk@3.2.0 --user ${{ github.repository_owner }} --output dist/github-snake.svg
-          npx -y @platane/snk@3.2.0 --user ${{ github.repository_owner }} --output dist/github-snake-dark.svg?palette=github-dark
-          npx -y @platane/snk@3.2.0 --user ${{ github.repository_owner }} --output dist/ocean.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
+        uses: Platane/snk@v3.2.0
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/github-snake-dark.svg?palette=github-dark
+            dist/ocean.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
 
       # Push the generated SVG to the output branch
       - name: Push github-contribution-grid-snake.svg to the output branch
