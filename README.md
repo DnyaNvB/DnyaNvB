@@ -1,4 +1,4 @@
-👋 **Donya Navabi** here| Computer Engineering @ Sharif University of Technology
+👋 **Donya Navabi** here | Computer Engineering @ Sharif University of Technology
 
 - 🐈‍⬛ I approach code like a cat—exploring every corner and hunting down bugs.
 <!--
