@@ -21,17 +21,25 @@ jobs:
     timeout-minutes: 5
     
     steps:
-      # Generates a snake game from a GitHub user's contribution graph, outputs an SVG animation using the Dockerized version
-      - name: Generate github-contribution-grid-snake.svg
-        uses: Platane/snk@docker
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          github_user_name: ${{ github.repository_owner }}
-          outputs: |
-            dist/github-snake-dark.svg?palette=github-dark
-            dist/ocean.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
-          
-      # Pushes the content of <build_dir> to the output branch
-      # The content will be available at https://raw.githubusercontent.com/<github_user>/<repository>/<target_branch>/<file>
+          node-version: '16'
+
+      # Install canvas dependency
+      - name: Install canvas dependency
+        run: |
+          npm install canvas
+
+      # Generate the snake game SVG/GIF
+      - name: Generate github-contribution-grid-snake.svg
+        run: |
+          npx -y @platane/snk@3.2.0 --user ${{ github.repository_owner }} --output dist/github-snake.svg
+          npx -y @platane/snk@3.2.0 --user ${{ github.repository_owner }} --output dist/github-snake-dark.svg?palette=github-dark
+          npx -y @platane/snk@3.2.0 --user ${{ github.repository_owner }} --output dist/ocean.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
+
+      # Push the generated SVG to the output branch
       - name: Push github-contribution-grid-snake.svg to the output branch
         uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
