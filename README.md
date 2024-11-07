@@ -1,6 +1,6 @@
 👋 **Donya Navabi** here| Computer Engineering @ Sharif University of Technology
 
-- 🐈‍⬛ I approach code like a cat—exploring every corner, hunting down bugs.
+- 🐈‍⬛ I approach code like a cat—exploring every corner and hunting down bugs.
 <!--
 **DnyaNvB/DnyaNvB** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
