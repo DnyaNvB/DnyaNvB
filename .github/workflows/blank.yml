@@ -12,7 +12,6 @@ on:
   push:
     branches:
       - '*'
-
 jobs:
   generate:
     permissions: 
@@ -21,17 +20,27 @@ jobs:
     timeout-minutes: 5
     
     steps:
-      # Generates a snake game from a GitHub user's contribution graph, outputs an SVG animation
-      - name: Generate github-contribution-grid-snake.svg
+      # Set up Node.js and install dependencies
+      - name: Set up Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      # Install the canvas dependency if required (alternative in case needed for svg-only variant)
+      - name: Install canvas dependency
+        run: |
+          npm install -g canvas
+
+      # Generate the snake animation SVG
+      - name: Generate GitHub Contribution Snake SVG
         uses: Platane/snk/svg-only@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark&color_snake=orange
           
-      # Pushes the content of <build_dir> to the output branch
-      # The content will be available at https://raw.githubusercontent.com/<github_user>/<repository>/<target_branch>/<file>
-      - name: Push github-contribution-grid-snake.svg to the output branch
+      # Push the SVG file to the output branch for display on your profile
+      - name: Push SVG to Output Branch
         uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
           target_branch: output
