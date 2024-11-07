@@ -1,8 +1,7 @@
-👋 Hello! **Donya** here
+# 👋 **Donya** here
+### Computer Engineering @ Sharif University of Technology
 
-Computer Engineering @ Sharif University of Technology
-
-- 🐈 Coding with a cat’s curiosity—exploring every corner, hunting down bugs. 
+ ### 🐈 Coding with a cat’s curiosity—exploring every corner, hunting down bugs. 
 ![GitHub Contribution Snake](https://raw.githubusercontent.com/DnyaNvB/DnyaNvB/output/github-contribution-grid-snake-dark.svg)
 <!--
 **DnyaNvB/DnyaNvB** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
